@@ -27,3 +27,7 @@ To run both the frontend and backend with one command:
 ```
 nx run-many -t serve -p apps/frontend apps/backend
 ```
+
+## Other commands
+
+Run `git submodule update --remote` to pull the latest changes from the component library
