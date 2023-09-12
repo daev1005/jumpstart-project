@@ -11,7 +11,7 @@ export const App: React.FC = () => {
   return (
     <>
       <div>Hello World!</div>
-      <Button>Click Me!</Button>
+      <Button>I am a button</Button>
     </>
   );
 };
