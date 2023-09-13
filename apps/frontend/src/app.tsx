@@ -1,19 +1,29 @@
 import { useEffect } from 'react';
-import { Button } from '../../../shared/src/components/button'; // '@shared/src/components/button';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import apiClient from './api/apiClient'; // '@api/apiClient';
+import Root from './containers/root';
+import NotFound from './containers/404';
+import Test from './containers/test';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: '/test',
+    element: <Test />,
+  },
+]);
 
 export const App: React.FC = () => {
   useEffect(() => {
     apiClient.getHello().then((res) => console.log(res));
   }, []);
 
-  return (
-    <>
-      <div>Hello World!</div>
-      <Button>I am a button</Button>
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
