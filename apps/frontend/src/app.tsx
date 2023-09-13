@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import apiClient from './api/apiClient'; // '@api/apiClient';
-import Root from './containers/root';
-import NotFound from './containers/404';
-import Test from './containers/test';
+import apiClient from '@api/apiClient';
+import Root from '@containers/root';
+import NotFound from '@containers/404';
+import Test from '@containers/test';
 
 const router = createBrowserRouter([
   {
