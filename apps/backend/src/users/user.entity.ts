@@ -1,9 +1,10 @@
-import { Entity, Column, ObjectIdColumn, ObjectId } from 'typeorm';
-import { Status } from './types';
+import { Entity, Column } from 'typeorm';
+import { Status, Role, Team } from './types';
+
 @Entity()
 export class User {
-  @ObjectIdColumn() // https://github.com/typeorm/typeorm/issues/1584
-  userId: ObjectId;
+  @Column({ primary: true })
+  userId: number;
 
   @Column()
   status: Status;
@@ -18,7 +19,7 @@ export class User {
   email: string;
 
   @Column()
-  profilePicture: string;
+  profilePicture: string | null;
 
   @Column()
   linkedin: string | null;
@@ -27,8 +28,8 @@ export class User {
   github: string | null;
 
   @Column()
-  team: string | null;
+  team: Team | null;
 
   @Column()
-  role: string | null;
+  role: Role[] | null;
 }
