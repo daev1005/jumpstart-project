@@ -1,13 +1,13 @@
 import {
   DefaultValuePipe,
   ParseBoolPipe,
+  ParseIntPipe,
   Query,
   Body,
   Controller,
   Get,
   Param,
   Patch,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { UpdateUserDTO } from './update-user.dto';
 import { UsersService } from './users.service';
@@ -23,6 +23,11 @@ export class UsersController {
     getAllMembers: boolean,
   ) {
     return this.usersService.findAll(getAllMembers);
+  }
+
+  @Get('/:userId')
+  getUser(@Param('userId', ParseIntPipe) userId: number) {
+    return this.usersService.findOne(userId);
   }
 
   @Patch(':userId')

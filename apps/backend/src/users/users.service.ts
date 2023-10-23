@@ -1,6 +1,6 @@
 import {
-  Injectable,
   BadRequestException,
+  Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -33,6 +33,39 @@ export class UsersService {
     });
 
     return users;
+  }
+
+  async findOne(userId: number) {
+    const user = await this.usersRepository.findOneBy({ userId });
+
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+
+    const currentUser = getCurrentUser();
+
+    const currentStatus = currentUser.status;
+    const targetStatus = user.status;
+    switch (currentStatus) {
+      //admin can access all users
+      case Status.ADMIN:
+        break;
+      //recruiter can access applicant, and themselves
+      case Status.RECRUITER:
+        if (targetStatus == Status.APPLICANT) {
+          break;
+        } else if (currentUser.userId !== user.userId) {
+          throw new BadRequestException('User not found');
+        }
+        break;
+      //everyone else can only access themselves
+      default:
+        if (currentUser.userId !== user.userId) {
+          throw new BadRequestException('User not found');
+        }
+    }
+
+    return user;
   }
 
   async updateUser(
