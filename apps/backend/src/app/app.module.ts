@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersModule } from '../users/users.module';
 import { PluralNamingStrategy } from '../strategies/plural-naming.strategy';
 
 @Module({
@@ -11,7 +12,7 @@ import { PluralNamingStrategy } from '../strategies/plural-naming.strategy';
       type: 'mongodb',
       host: '127.0.0.1',
       port: 27017,
-      database: 'scaffoldingTest',
+      database: 'c4cOpsTest',
       // username: 'root',
       // password: 'root',
       autoLoadEntities: true,
@@ -20,6 +21,7 @@ import { PluralNamingStrategy } from '../strategies/plural-naming.strategy';
       synchronize: true,
       namingStrategy: new PluralNamingStrategy(),
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
