@@ -1,4 +1,3 @@
-/*
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -41,4 +40,3 @@ export class LabelsService {
     // should throw an exception if color field (when given) is not a valid hex color
   }
 }
-*/

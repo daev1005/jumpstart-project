@@ -1,4 +1,3 @@
-/*
 import { Task } from './types/task.entity';
 import { TaskCategory } from './types/category';
 import { CreateTaskDTO } from './dtos/create-task.dto';
@@ -60,4 +59,3 @@ export class TasksService {
         // should throw a BadRequestException if the task with the given ID does not exist
     }
 }
-    */

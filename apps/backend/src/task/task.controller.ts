@@ -1,4 +1,3 @@
-/*
 import {
   Controller,
   Get,
@@ -28,6 +27,7 @@ export class TasksController {
    * @param createTaskDto The data to create the task.
    * @returns The created task.
    * @throws BadRequestException if the task data is invalid.
+  */
    
   @Post('/')
   async createTask(@Body() createTaskDto: CreateTaskDTO): Promise<Task> {
@@ -41,6 +41,7 @@ export class TasksController {
    * @returns The updated task.
    * @throws BadRequestException if the task with the given ID does not exist.
    * @throws BadRequestException if none of the title, description, or due date is provided in the given DTO.
+  */
    
   @Patch('/:taskId/edit')
   async updateTask(
@@ -52,6 +53,7 @@ export class TasksController {
 
   /** Get all tasks.
    * @returns An array of all tasks.
+  */
    
   @Get('/')
   async getAllTasks(): Promise<Task[]> {
@@ -63,6 +65,7 @@ export class TasksController {
    * @param id The ID of the task to delete.
    * @returns A delete result.
    * @throws BadRequestException if the task with the given ID does not exist.
+  */
    
   @Delete('/:taskId')
   async deleteTask(
@@ -83,6 +86,7 @@ export class TasksController {
    * @returns The updated task.
    * @throws BadRequestException if the task with the given ID does not exist.
    * @throws BadRequestException if the new category is invalid.
+  */
    
   @Patch('/:taskId/category')
   async updateTaskCategory(
@@ -109,6 +113,7 @@ export class TasksController {
    * @returns The updated task.
    * @throws BadRequestException if the task with the given ID does not exist.
    * @throws BadRequestException if the labels are invalid.
+  */
    
   @Post('/add_labels')
   async addTaskLabels(@Body(ValidationPipe) updateLabelsDto: UpdateLabelsDTO) {
@@ -123,6 +128,7 @@ export class TasksController {
    * @returns The updated task.
    * @throws BadRequestException if the task with the given ID does not exist.
    * @throws BadRequestException if the labels are invalid.
+  */
   
   @Post('/remove_labels')
   async removeTaskLabels(
@@ -138,10 +144,10 @@ export class TasksController {
    * @param id The ID of the task to retrieve.
    * @returns The requested task.
    * @throws BadRequestException if the task with the given ID does not exist.
+  */
    
   @Get('/:taskId')
   async getTaskById(@Param('taskId') id: number): Promise<Task> {
     return await this.tasksService.getTaskById(id);
   }
 }
-*/
