@@ -1,4 +1,3 @@
-/*
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksController } from './task.controller';
@@ -13,4 +12,3 @@ import { Label } from '../label/types/label.entity';
   exports: [TasksService],
 })
 export class TaskModule {}
-*/

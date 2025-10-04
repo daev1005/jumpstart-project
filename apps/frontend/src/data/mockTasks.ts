@@ -1,0 +1,58 @@
+import { Task, TaskCategory } from '../types/types';
+
+export const mockTasks: Task[] = [
+    {
+        id: 1,
+        title: 'Design homepage',
+        description: 'Create wireframes and mockups for the homepage.',
+        dueDate: new Date('2025-07-10'),
+        dateCreated: new Date('2025-06-01'),
+        labels: [],
+        category: TaskCategory.TODO,
+    },
+    {
+        id: 2,
+        title: 'Set up CI/CD pipeline',
+        description: 'Configure GitHub Actions for automated testing and deployment.',
+        dueDate: new Date('2025-10-15'),
+        dateCreated: new Date('2025-06-05'),
+        labels: [],
+        category: TaskCategory.IN_PROGRESS,
+    },
+    {
+        id: 3,
+        title: 'Implement authentication',
+        description: 'Add login and registration functionality using OAuth.',
+        dueDate: new Date('2025-11-07'),
+        dateCreated: new Date('2025-09-07'),
+        labels: [],
+        category: TaskCategory.DRAFT,
+    },
+    {
+        id: 4,
+        title: 'Write unit tests',
+        description: 'Increase test coverage for the frontend components.',
+        dueDate: new Date('2025-10-12'),
+        dateCreated: new Date('2025-08-10'),
+        labels: [],
+        category: TaskCategory.COMPLETED,
+    },
+    {
+        id: 5,
+        title: 'Implement authentication',
+        description: 'Add login and registration functionality using OAuth.',
+        dueDate: new Date('2025-11-01'),
+        dateCreated: new Date('2025-09-27'),
+        labels: [],
+        category: TaskCategory.IN_PROGRESS,
+    },
+    {
+        id: 6,
+        title: 'Write unit tests',
+        description: 'Increase test coverage for the frontend components.',
+        dueDate: new Date('2025-12-12'),
+        dateCreated: new Date('2025-09-10'),
+        labels: [],
+        category: TaskCategory.TODO,
+    },
+];
