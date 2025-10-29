@@ -14,3 +14,52 @@ interface LabelCardProps {
     wasAlreadyChecked: boolean,
   ) => void;
 }
+
+export const LabelCard: React.FC<LabelCardProps> = ({
+  id,
+  title,
+  color,
+  defaultChecked,
+  changeCheckedState,
+}) => {
+  const [currentlyChecked, setCurrentlyChecked] = useState(defaultChecked);
+
+  useEffect(() => {
+    setCurrentlyChecked(defaultChecked);
+  }, [defaultChecked]);
+
+  const handleChange = () => {
+    setCurrentlyChecked(!currentlyChecked);
+    changeCheckedState(id, currentlyChecked);
+  };
+
+  return (
+    <div
+      className="flex w-[137px] h-[31px] rounded-full text-center align-middle"
+      style={{ backgroundColor: color }}
+    >
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={currentlyChecked}
+            onChange={handleChange}
+            icon={<CircleIcon sx={{ fontSize: 20 }} className="text-white" />}
+            checkedIcon={
+              <CheckIcon
+                sx={{ fontSize: 20 }}
+                className="rounded-full text-black bg-white"
+              />
+            }
+          />
+        }
+        label={title.length >= 10 ? title.slice(0, 8) + '..' : title}
+        labelPlacement="start"
+        className="flex justify-between items-center w-full"
+        sx={{
+          m: 0,
+          pl: 2,
+        }}
+      />
+    </div>
+  );
+};
