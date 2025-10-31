@@ -19,6 +19,11 @@ export class TasksService {
     // Saves a new task to the 'tasks' table using the given CreateTaskDTO
     // should throw a BadRequestException if the title field is null
     async createTask(createTaskDto: CreateTaskDTO): Promise<Task> {
+        if (!createTaskDto.title || !createTaskDto.description || !createTaskDto.category) {
+            throw new BadRequestException('Title, description, and category are required');
+        }
+        const newtask = this.taskRepository.create(createTaskDto);
+        return this.taskRepository.save(newtask);
     }
 
     // Updates a task by its ID using the given UpdateTaskDTO
@@ -57,5 +62,14 @@ export class TasksService {
     // Get a task by its ID
     async getTaskById(id: number): Promise<Task> {
         // should throw a BadRequestException if the task with the given ID does not exist
+        const task = await this.taskRepository.findOne({
+            where: { id },
+            relations: ['labels'],
+        });
+        if (!task) {
+            throw new BadRequestException(`Task with ID ${id} does not exist`);
+        }
+
+        return task;
     }
 }
