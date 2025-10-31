@@ -31,6 +31,5 @@ export const Labels: React.FC<LabelsProps> = ({
   const changeCheckedState = async (
     targetLabelId: number,
     wasAlreadyChecked: boolean,
-  ) => {
-  }; 
+  ) => {};
 };
